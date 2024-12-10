@@ -1,0 +1,60 @@
+[placeholders.version]
+prompt = "Initial version"
+type = "string"
+default = "0.1.0"
+
+[placeholders.edition]
+prompt = "Rust edition"
+type = "string"
+choices = ["2024", "2021", "2018"]
+default = "2021"
+
+[placeholders.license]
+prompt = "License"
+type = "string"
+choices = ["BSD-3-Clause", "LGPL-3.0-or-later", "Custom"]
+default = "BSD-3-Clause"
+
+[placeholders.github_username]
+prompt = "Your github username"
+type = "string"
+
+[placeholders.nix]
+prompt = "Enable nix files"
+type = "bool"
+default = true
+
+[placeholders.exe]
+prompt = "Enable executable targets"
+type = "bool"
+default = false
+
+[placeholders.test]
+prompt = "Enable tests"
+type = "bool"
+default = true
+
+[placeholders.example]
+prompt = "Enable examples"
+type = "bool"
+default = false
+
+[placeholders.bench]
+prompt = "Enable benchmarks"
+type = "bool"
+default = false
+
+[conditional.'!nix']
+ignore = [ "flake.nix" ]
+
+[conditional.'!exe']
+ignore = [ "app" ]
+
+[conditional.'!test']
+ignore = [ "test" ]
+
+[conditional.'!example']
+ignore = [ "examples" ]
+
+[conditional.'!bench']
+ignore = [ "bench" ]

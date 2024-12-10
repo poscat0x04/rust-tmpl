@@ -1,0 +1,44 @@
+[package]
+name = "{{ crate_name }}"
+description = ""
+version = "{{ version }}"
+edition = "{{ edition }}"
+authors = ["{{ authors }}"]
+
+repository = "https://github.com/{{ github_username }}/{{ project-name }}"
+
+readme = "README.md"
+license = "{{ license }}"
+
+keywords = []
+categories = []
+
+[lib]
+path = "src/lib.rs"
+
+{% if bin %}
+[[bin]]
+path = "app/main.rs"
+
+{% endif %}{% if example %}
+[[example]]
+path = "examples/example.rs"
+
+{% endif %}{% if test %}
+[[test]]
+path = "test/test.rs"
+
+{% endif %}{% if bench %}
+[[bench]]
+path = "bench/bench.rs"
+
+{% endif %}
+[dependencies]
+
+
+[profile.dev]
+opt-level = 1
+
+[profile.release]
+lto = true
+strip = true
